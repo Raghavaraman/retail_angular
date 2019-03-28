@@ -1,0 +1,200 @@
+<div id="Inventory" class="main_tab tab-pane fade" *ngIf="retailinvent">
+  <div class="inventory_tabs">
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active">
+        <a href="#inventoryHelath" role="tab" data-toggle="tab">
+          <div class="inline_flex">
+            <div class="side_icon">
+              <img src="assets/images/retail/small_health.png" class="img-responsive">
+            </div>
+            <p class="para_text_color">Health &amp; Fitness</p>
+          </div>
+        </a>
+      </li>
+      <li role="presentation" class="disabled">
+        <a href="javascript:void(0)">
+          <div class="inline_flex">
+            <div class="side_icon">
+              <img src="assets/images/retail/small_cosmetics.png" class="img-responsive">
+            </div>
+            <p class="para_text_color">Cosmetics &amp; Lifestyle</p>
+          </div>
+        </a>
+      </li>
+      <li role="presentation" class="disabled">
+        <a href="javascript:void(0)">
+          <div class="inline_flex">
+            <div class="side_icon">
+              <img src="assets/images/retail/small_vegetables.png" class="img-responsive">
+            </div>
+            <p class="para_text_color">Groceries</p>
+          </div>
+        </a>
+      </li>
+      <li role="presentation" class="disabled">
+        <a href="javascript:void(0)">
+          <div class="inline_flex">
+            <div class="side_icon">
+              <img src="assets/images/retail/small_dairy.png" class="img-responsive">
+            </div>
+            <p class="para_text_color">Dairy</p>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!-- /inventory_tabs -->
+  <div class="tab-content inventory_contents">
+    <div role="tabpanel" class="tab-pane active" id="inventoryHelath">
+      <div class="fist_inventory_div inline_flex">
+        <div class="shelf_stock_div">
+          <h3 class="panel_title">Shelf Stock</h3>
+          <div id="shelft_stock_data" class="stcok_itmes_img">
+            <!-- data here -->
+            <img id="shelf_feed" class="img-responsive" src="/assets/images/retail/{{retailinvent.shelfStock[0].img}}">
+          </div>
+        </div>
+        <div class="misplacement_div">
+          <h3 class="panel_title">Misplacement</h3>
+          <div id="misplacement_data" *ngFor="let inv of retailinve">
+            <!-- data here -->
+            <div class='misplace_products inline_flex' *ngFor="let m of inv.misplaced">
+              <div class='product_side_img'>
+                <img src='assets/images/retail/{{m.productImg}}' class='img-responsive'>
+              </div>
+              <div class='misplace_content'>
+                <div class='inline_flex'>
+                  <div class='bottle_icon pr_10'>
+                    <img src='assets/images/retail/{{m.status}}.png' class='img-responsive'>
+                  </div>
+                  <p class='para_text_normal'>{{m.productName}}</p>
+                </div>
+                <p class='para_text_normal'>
+                  <span class='para_text_color'>Current Location :</span>{{m.currentLocation}}</p>
+                <p class='para_text_normal'>
+                  <span class='para_text_color'>Move To :</span>{{m.moveTo}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /fist_inventory_div -->
+      <div class="second_inventory_div inline_flex">
+        <div class="store_div">
+          <h3 class="panel_title">Store</h3>
+          <div class="overflow_list">
+            <ul id="store_data" class="products_list_li" *ngFor="let inv of retailinve">
+              <!-- data here -->
+              <li *ngFor="let m of inv.store">
+                <p class='para_text_normal'>{{m.name}}</p>
+                <p class='para_text_normal'>
+                  <span class='para_text_color'>{{m.count}}</span>{{m.containerType}}</p>
+              </li>
+            </ul>
+          </div>
+          <!-- /overflow_list -->
+        </div>
+        <!-- /store_div -->
+        <div class="warehouse_div">
+          <h3 class="panel_title">Warehouse</h3>
+          <div class="overflow_list">
+            <ul id="warehouse_data" class="products_list_li" *ngFor="let inv of retailinve">
+              <!-- data here -->
+              <li *ngFor="let m of inv.warehouse">
+                <p class='para_text_normal'>{{m.name}}</p>
+                <p class='para_text_normal'>
+                  <span class='para_text_color'>{{m.count}}</span>{{m.containerType}}</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- /warehouse_div -->
+      </div>
+      <div class="third_inventory_div inline_flex">
+        <div class="issue_stack_div">
+          <h3 class="panel_title">Issue stack</h3>
+          <div class="issue_stack_div_content overflow_list">
+            <ul id="issue_stack_data" class="products_list_li" *ngFor="let inv of retailinve">
+              <!-- data here -->
+              <li *ngFor="let m of inv.issueStack">
+                <div class='first_content'>
+                  <p class='para_text_normal'>{{m.name}}</p>
+                  <p class='para_text_color'>{{m.detail}}</p>
+                </div>
+                <p class='para_text_normal'>{{m.summary}}</p>
+                <button class='inform_btn'>{{m.info_msg}}</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- /issue_stack_div -->
+        <div class="top_selling_div">
+          <h3 class="panel_title">Top Selling</h3>
+          <div id="top_selling_data" class="top_selling">
+            <!-- data here -->
+              <div class='inner_slide_products inline_flex'  *ngFor="let m of retailinvent.topSelling">
+                <div class='selling_product_img'>
+                  <img src='assets/images/retail/{{m.img}}' class='img-responsive'>
+                </div>
+                <div class='inner_selling_content'>
+                  <h4 class='para_text_normal'>{{m.name}}</h4>
+                  <p class='para_text_color'>{{m.position}}</p>
+                </div>
+              </div>
+          </div>
+          <!-- /top_selling -->
+        </div>
+        <!-- /top_selling_div -->
+      </div>
+      <!-- /third_inventory_div -->
+      <div class="fourth_inventory_div inline_flex">
+        <div class="recorders_div">
+          <h3 class=panel_title>Reorders</h3>
+          <div class="table_heading">
+            <p class="para_text_normal">Status</p>
+          </div>
+          <div class="overflow_list">
+            <ul id="recorders_data" class="products_list_li" *ngFor="let inv of retailinve">
+              <!-- data here -->
+              <li *ngFor="let m of inv.reorders">
+                <p class='para_text_normal'>{{m.name}}</p>
+                <p class='para_text_color'>{{m.time}}</p>
+                <p class='para_text_color inline_flex'>
+                  <img src='assets/images/retail/{{m.statusIcon}}.png' class='img-responsive pr_10'>
+                  <span class='para_text_color'>{{m.status}}</span>
+                </p>
+              </li>
+            </ul>
+          </div>
+          <!-- /overflow_list -->
+        </div>
+        <!-- /recorders_div -->
+        <div class="upcoming_events_div">
+          <h3 class=panel_title>upcoming events</h3>
+          <div class="table_heading">
+            <p class="para_text_normal">Status</p>
+          </div>
+          <div class="overflow_list">
+            <ul id="upcoming_event_data" class="products_list_li" *ngFor="let inv of retailinve">
+              <!-- data here -->
+              <li *ngFor="let m of inv.upcomingEvents">
+                <p class='para_text_normal'>{{m.name}}</p>
+                <p class='para_text_color'>{{m.time}}</p>
+                <p class='para_text_color inline_flex'>
+                  <img src='assets/images/retail/{{m.icon}}' class='img-responsive pr_10'>
+                  <span class='para_text_color'>{{m.summary}}</span>
+                </p>
+              </li>
+            </ul>
+          </div>
+          <!-- /overflow_list -->
+        </div>
+        <!-- /upcoming_events_div -->
+      </div>
+      <!-- /fourth_inventory_div -->
+    </div>
+    <!-- /inventoryHelath -->
+  </div>
+  <!-- /inventory_contents-->
+</div>
+<!-- /Inventory -->

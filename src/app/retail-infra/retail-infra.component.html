@@ -1,0 +1,125 @@
+<div id="Infra" class="main_tab tab-pane fade" *ngIf="retailinfra">
+  <div class="infra_div">
+    <div class="dropdown_nav">
+      <div class="drop_dowm_img">
+        <img src="assets/images/retail/infra_dropdowon.png" class="img-resposnive">
+      </div>
+    </div>
+    <div class="active_nonactive_support inline_flex align_items_start justify_beetween border_bottom_retail">
+      <div class="left_content h_100">
+        <!-- data here -->
+        <div id="active_non_active_data" class="active_va_nonactive  h_100">
+          <h3 class="panel_title">Active VS Non Active</h3>
+          <div class="inline_flex justify_beetween pt_18">
+            <div class="active_associates">
+              <h5 class="caption_text active_text ">{{retailinfra.activeNonActive[0].active}}</h5>
+              <p class="para_text_color">Active</p>
+            </div>
+            <div class="onleave_associates">
+              <h5 class="caption_text on_break_text">{{retailinfra.activeNonActive[0].inactive}}</h5>
+              <p class="para_text_color">Inactive</p>
+            </div>
+            <div class="onbreak_associates">
+              <h5 class="caption_text onleave_text">{{retailinfra.activeNonActive[0].underService}}</h5>
+              <p class="para_text_color">Under service</p>
+            </div>
+          </div>
+        </div>
+        <!-- /active_va_nonactive -->
+        <div class="heavy_duty_cameras_div">
+          <h3 class="panel_title">Heavy duty Cameras</h3>
+          <ul id="camaras_list_data" class="camaras_list overflow_scroll pt_18" *ngFor="let inf of retailinfr">
+            <!-- data here -->
+            <li *ngFor="let h of inf.heavyDutyCameras">
+              <p class='para_text_normal'>{{h.name}}</p>
+              <p class='para_text_normal {{h.status}}_text'>{{h.status}}</p>
+              <p class='para_text_color'>{{h.count}}</p>
+            </li>
+          </ul>
+        </div>
+        <!-- /heavy_duty_cameras_div -->
+      </div>
+      <!-- /left_content -->
+      <div class="right_content h_100">
+        <div class="support_div border_bottom_retail h_100">
+          <h3 class="panel_title">Support</h3>
+          <div class="support_content_div inline_flex pt_18">
+            <div class="support_panel">
+              <p class="para_text_normal">
+                <strong>24/7 Support: </strong>Tom fred</p>
+            </div>
+            <div class="support_img">
+              <img src="assets/images/retail/support_icon.png" class="img-responsive">
+            </div>
+          </div>
+        </div>
+        <div class="types_of_cameras">
+          <h3 class="panel_title">Types Of Cameras</h3>
+          <div class="about_cameras pt_18">
+            <div id="camaras_type_data" class="inline_flex justify_beetween text-center" *ngFor="let inf of retailinfr">
+              <!-- data here -->
+              <div class='camera_0 cameras_info' *ngFor="let h of inf.camerasTypes">
+                <h5 class='para_text_normal'>{{h.count}}</h5>
+                <p class='para_text_color'>{{h.name}}</p>
+                <img src='assets/images/retail/{{h.image}}.png' class='img-responsive camera_0'>
+              </div>
+            </div>
+          </div>
+          <!-- /about_cameras -->
+          <div id="camaras_type_img_data" class="cameras_view">
+            <!-- data here -->
+            <img id="store_feed" class="img-responsive" src="/assets/images/retail/{{retailinfra.camerasTypesImg}}.png">
+          </div>
+        </div>
+        <!-- /types_of_cameras -->
+      </div>
+      <!-- /right_content -->
+    </div>
+    <!-- /active_nonactive_support -->
+    <div class="network_electricity_clarity_div">
+      <div class="inline_flex justify_beetween align_items_start h_100">
+        <div class="network_value">
+          <h3 class="panel_title">Network Value</h3>
+          <div class="value_content">
+            <h2 id="network_value_data" class="value_number">
+              <!-- data here -->
+              <span>{{retailinfra.networkValueStart}}</span>
+              <sub class='para_text_color sub_text'>{{retailinfra.networkUnit}}</sub>
+            </h2>
+          </div>
+        </div>
+        <!-- /network_value -->
+        <div class="ele_status">
+          <h3 class="panel_title">Electricity Status</h3>
+          <div class="ele_status_content">
+            <div class="electricity_status eleStatus">
+              <div class="second circle circleProgress">
+                <circle-progress [percent]="100" [radius]="60" [outerStrokeWidth]="8" [outerStrokeColor]="'#00ffe4'" [showInnerStroke]="false"
+                  [titleColor]="'#ffffff'" [showSubtitle]="false" [animation]="true" [animationDuration]="1000"></circle-progress>
+              </div>
+            </div>
+            <!-- /eleStatus -->
+          </div>
+        </div>
+        <!-- /network_value -->
+        <div class="clarity_status">
+          <h3 class="panel_title">Clarity Status</h3>
+          <div class="ele_status_content">
+            <div id="clarity_status_data" class="inline_flex justify_beetween" *ngFor="let inf of retailinfr">
+              <!-- data here -->
+              <div class='focused_1 focused_div' *ngFor="let h of inf.clarityStatus">
+                <p class='para_text_normal active_text'>{{h.count}}</p>
+                <p class='para_text_color'>{{h.name}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /clarity_status -->
+      </div>
+      <!-- /inline_flex -->
+    </div>
+    <!-- /network_electricity_clarity_div -->
+  </div>
+  <!-- /infra_div -->
+</div>
+<!-- /Infra -->

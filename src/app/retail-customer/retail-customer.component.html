@@ -1,0 +1,311 @@
+<div id="Customer" class="main_tab tab-pane fade in active" *ngIf="retail">
+  <div class="target_tabs_nav">
+    <ul class="nav nav-pills">
+      <li class="active">
+        <a href="#today" data-toggle="tab">Today</a>
+      </li>
+      <li>
+        <a href="javascript:void(0)">Weekly</a>
+      </li>
+      <li>
+        <a href="javascript:void(0)">Monthly</a>
+      </li>
+      <li>
+        <a href="javascript:void(0)">Yearly</a>
+      </li>
+    </ul>
+  </div>
+  <div class="tab-content clearfix">
+    <div class="tab-pane active" id="today">
+      <div class="select_target_div">
+        <div class="select_target_graph">
+          <h3 class="panel_title">sales target</h3>
+          <div class="graph_img pt_30">
+            <!-- <img src="assets/images/retail/select_target_img.png" class="img-responsive" alt="SELECT TARGET">-->
+            <div class="Semiprogress selectTarget">
+              <div class="barOverflow">
+                <div class="bar"></div>
+              </div>
+              <div id="sale_target_meter" class="progress_content">
+                <!-- data here  -->
+                <p class='progress_text_color'>{{retail.salesTarget[0].day}}</p>
+                <p id='current_sales' class='value_text_span'>${{retail.salesTarget[0].current}}</p>
+                <p id='meter_percent' class='value_text_span' style='display:none'>
+                  <span>{{(retail.salesTarget[0].current / retail.salesTarget[0].max) * 100}}</span>%</p>
+                <p class='progress_text_white'>{{retail.salesTarget[0].status}}</p>
+              </div>
+            </div>
+            <div class="min_max_div">
+              <p class="first_target_text min_max_text">$ 0</p>
+              <p class="sec_target_text min_max_text">$ 20000</p>
+            </div>
+            <!-- /min_max_div -->
+
+            <!-- /Semiprogress -->
+          </div>
+        </div>
+        <div class="verticle_tabs">
+          <div class="items_tab_nav">
+            <ul id="productCategory_data" class="nav nav-pills nav-stacked nav_overflow">
+              <!-- data here -->
+              <li class='' *ngFor="let pc of retail.productCategory;index as i">
+                <a href='#cat_{{i}}' data-toggle='pill'>
+                  <div class='inner_inline_style'>
+                    <div class='left_side_img'>
+                      <img src='assets/images/retail/{{pc.catImg}}' class='img-responsive' alt='health'>
+                    </div>
+                    <div class='right_side_content'>
+                      <h5 class='nav_inner_title'>{{pc.catName}}</h5>
+                      <p class='nav_inner_price'>${{pc.amount}}</p>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div id="catproductListing_data" class="tab-content">
+              
+            <!-- data here -->
+            <div class='tab-pane cat_0' id='#cat_0'>
+              <div class='overflow_scroll productlisting_data1' id='' *ngFor="let r of retailc"  >
+                <div class="product_inline" *ngFor="let pc of r.productCategory[0].catSellingProduct">
+                  <div class="inner_inline_style">
+                    <div class="left_side_img">
+                      <img src="assets/images/retail/{{pc.productImg}}" class="img-responsive" alt="health"> </div>
+                    <div class="right_side_content">
+                      <h5 class="nav_inner_title">{{pc.sellingStatus}}</h5>
+                      <p class="nav_inner_sold">{{pc.productName}} ({{pc.soldCount}} Sold)</p>
+                      <p class="nav_inner_price">${{pc.soldCount * pc.pricePerProduct}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- / select_target_div -->
+      <div class="promotion_complaints_div inline_flex">
+        <div class="promotion_div">
+          <div class="top_title_panel justify_beetween inline_flex">
+            <h3 class="panel_title">Promotion</h3>
+            <div class="dropdowm_div">
+              <img src="assets/images/retail/dropdown_img.png" class="img-responsive" alt="dropdown">
+            </div>
+          </div>
+          <div class="bottom_body_part">
+            <div id="promotion_data" class="slide_calandr">
+              <!-- data here -->
+              <div class='first_slide slides_div'>
+                <div class='innner_flex_inline inline_flex'>
+                  <div class='ease_calcd inline_flex'>
+                    <div class='aside_icon'>
+                      <img src='assets/images/retail/{{retail.promotions[0].icon_image}}' class='img-responsive'>
+                    </div>
+                    <div class='aside_content'>
+                      <h4 class='promotion_ease_title'>{{retail.promotions[0].name}}</h4>
+                    </div>
+                  </div>
+                  <div class='start_date_end_date inline_flex'>
+                    <div class='start_date'>
+                      <p class='para_text_color'>Start Date: </p>
+                      <p class='para_text_normal'>{{retail.promotions[0].startDate}}</p>
+                    </div>
+                    <div class='end_date'>
+                      <p class='para_text_color'>End Date: </p>
+                      <p class='para_text_normal'>{{retail.promotions[0].endDate}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='sec_slide slides_div'>
+                <ul class='inline_flex justify_beetween'>
+                  <li>
+                    <div class='buyers_content'>
+                      <h4 class='count_buyers'>{{retail.promotions[0].salesTarget}}</h4>
+                      <p class='buyers_text'>Sales targets</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class='buyers_content'>
+                      <h4 class='count_buyers'>{{retail.promotions[0].footfallTarget}}</h4>
+                      <p class='buyers_text'>Footfall Target</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class='buyers_content'>
+                      <h4 class='count_buyers'>{{retail.promotions[0].groupTarget}}</h4>
+                      <p class='buyers_text'>Target Group</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="complaints_div">
+          <div class="top_title_panel complaints_panel">
+            <h3 class="panel_title">complaints</h3>
+          </div>
+          <div class="complaints_list">
+            <ul id="complains_data" class="points_list">
+              <!-- data here -->
+              <li *ngFor="let r of retail.complains">
+                <p class='para_text_color'>{{r.name}}</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="behavior_offer_sentiment_div">
+        <div class="customer_behavior behavior_offer_divs">
+          <h3 class="panel_title">Customer behaviour</h3>
+          <div id="customerBehavior_data" class="contnet_body behavior_body">
+            <!-- data here -->
+            <div class='buyers_div inline_flex justify_beetween'>
+              <div class='buyers_content'>
+                <h4 class='count_buyers'>{{retail.customerBehavior[0].actualBuyer}}</h4>
+                <p class='buyers_text'>actual buyers</p>
+              </div>
+              <div class='buyers_content'>
+                <h4 class='count_buyers'>{{retail.customerBehavior[0].nonBuyers}}</h4>
+                <p class='buyers_text'>non buyers</p>
+              </div>
+            </div>
+            <div class='behavior_list'>
+              <ul class='behvior_list'>
+                <li>
+                  <p class='para_text_normal'>Purchase to Walk-in Ratio</p>
+                  <p class='para_text_color'>{{retail.customerBehavior[0].workingRatio}}</p>
+                </li>
+                <li>
+                  <p class='para_text_normal'>Avg. Sale Price Per Customer</p>
+                  <p class='para_text_color' id='avgSalePerCustomer'>{{retail.customerBehavior[0].avgSalesPurchase}}</p>
+                </li>
+                <li>
+                  <p class='para_text_normal'>Items per purchase</p>
+                  <p class='para_text_color' id='itemPerPurchase'>{{retail.customerBehavior[0].itemPerPurchase}}</p>
+                </li>
+                <li>
+                  <p class='para_text_normal'>Purchase to Walk-in Ratio</p>
+                  <p class='para_text_color'>{{retail.customerBehavior[0].walkInRatio}}</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="special_offer_div behavior_offer_divs">
+          <h3 class="panel_title">Special Offer</h3>
+          <div class="behavior_body">
+            <div id="specialOffers_data" class="offer_slider">
+              <!-- data here -->
+              <div class='product_items' *ngFor="let md of retail.specialOffers">
+                <div class='product_img'>
+                  <img src='assets/images/retail/{{md.icon_image}}' class='img-responsive'>
+                </div>
+                <div class='product_content'>
+                  <p class='para_text_color'>{{md.name}}</p>
+                  <p class='para_text_normal'>{{md.offerMsg}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="complaints_sentiment_div behavior_offer_divs">
+          <h3 class="panel_title">Customer sentiment</h3>
+          <div class="behavior_body complaints_senti">
+            <div class="happy_img">
+              <img src="assets/images/happy.png" class="img-responsive">
+            </div>
+            <div class="ct-chart ct-golden-section" id="chartsentiment"></div>
+          </div>
+        </div>
+      </div>
+      <div class="todays_footfall_div" style="display: none;">
+        <div class="toays_footfall_top inline_flex justify_beetween">
+          <div id="footfall_data0" class="weekly_monthly_yrly inline_flex">
+            <!-- data here -->
+            <h3 class='panel_title'>Today&apos;s FOOTFALL</h3>
+            <p class='para_text_normal'> Week:
+              <span class='para_text_color'>{{retail.todaysFootfall[0].week}}</span>
+            </p>
+            <p class='para_text_normal'> Month:
+              <span class='para_text_color'>{{retail.todaysFootfall[0].month}}</span>
+            </p>
+            <p class='para_text_normal'> Year:
+              <span class='para_text_color'>{{retail.todaysFootfall[0].year}}</span>
+            </p>
+          </div>
+          <div class="todays_footfall_dropdown">
+            <img src="assets/images/retail/dropdown_img_2.png" class="img-responsive">
+          </div>
+        </div>
+        <div class="age_range_slide total_footfall">
+          <div id="footfall_data1" class='slide_1'>
+            <!-- data here  -->
+            <div class='total_footfall inline_flex'>
+              <div class='footfall_number_one inline_flex'>
+                <div class='buyers_content'>
+                  <h4 class='count_buyers'>{{retail.todaysFootfall[0].totalFootfall}}</h4>
+                  <p class='buyers_text'>Total Footfall</p>
+                </div>
+                <div class='buyers_content'>
+                  <h4 class='count_buyers'>{{retail.todaysFootfall[0].recurringConsumers}}</h4>
+                  <p class='buyers_text'>Recurring Customers</p>
+                </div>
+              </div>
+              <div class='gender_counts inline_flex'>
+                <div class='count_female'>
+                  <div class='inner_inline_style'>
+                    <div class='left_side_img'>
+                      <img src='assets/images/retail/footfall_female_icon.png' class='img-responsive' alt='health'>
+                    </div>
+                    <div class='right_side_content'>
+                      <h5 class='count_buyers'>{{retail.todaysFootfall[0].female}}</h5>
+                      <p class='para_text_color'>Female</p>
+                    </div>
+                  </div>
+                </div>
+                <div class='count_male'>
+                  <div class='inner_inline_style'>
+                    <div class='left_side_img'>
+                      <img src='assets/images/retail/footfall_male_icon.png' class='img-responsive' alt='health'>
+                    </div>
+                    <div class='right_side_content'>
+                      <h5 class='count_buyers'>{{retail.todaysFootfall[0].male}}</h5>
+                      <p class='para_text_color'>Male</p>
+                    </div>
+                  </div>
+                </div>
+                <div class='count_other'>
+                  <div class='inner_inline_style'>
+                    <div class='left_side_img'>
+                      <img src='assets/images/retail/footfall_other_icon.png' class='img-responsive' alt='health'>
+                    </div>
+                    <div class='right_side_content'>
+                      <h5 class='count_buyers'>{{retail.todaysFootfall[0].others}}</h5>
+                      <p class='para_text_color'>Other</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class='slide_2'>
+            <div class='todays_range_graph inline_flex'>
+              <ul id="age_range_data" class='inline_flex ul_range' *ngFor="let r of retailc">
+                <li *ngFor="let aa of r.todaysFootfallAgeRange">
+                  <h4 class='count_number_title'>{{aa.values}}</h4>
+                  <p class='para_text_normal'>{{aa.age}}</p>
+                </li>
+              </ul>
+              <div id="footfall_peak_time_graph" class='graph_img slide_graph_img'>
+                <!-- <img src='assets/images/retail/slide_graph.png' class='img-responsive'> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

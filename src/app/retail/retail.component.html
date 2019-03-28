@@ -1,0 +1,334 @@
+<body class="retail_dashboard">
+  <section class="store_intelligence_section">
+    <div class="store_bg">
+      <video id="videoBg" onloadstart="this.volume=0" poster="" muted="" loop="" autoplay="" playsinline="" async="" autobuffer="">
+        <source src='assets/videos/store.mp4' type='video/mp4'> Your browser does not support the video tag.
+      </video>
+    </div>
+    <nav class="store_nav">
+      <a href="index.html" class="brand_logo">
+        <img src="assets/images/logo.png" class="img-responsive" alt="Ease-y">
+      </a>
+      <div class="middle_nav_content">
+        <h2 class="nav_page_title">Store Intelligence</h2>
+        <h2 class="nav_section_title">Customer</h2>
+        <div class="profile_div">
+          <div class="nav_time_date">
+            <p class="para_text_normal">
+              <span class="nav_date"></span>
+              <span class="nav_time"></span>
+            </p>
+          </div>
+          <div class="nav_profile_div">
+            <div class="nav_profile_img">
+              <img src="assets/images/retail/profile_pic.png" class="img-responsive">
+            </div>
+            <div class="nav_profile_content">
+              <p class="nav_profile_name">Peter John</p>
+              <p class="nav_profile_designation">Store Manager</p>
+            </div>
+          </div>
+          <!-- /nav_profile_div -->
+        </div>
+        <!--/profile_div -->
+      </div>
+      <!-- /middle_nav_content -->
+      <div class="alert_list_panel" (click)="topNav()">
+        <img src="assets/images/retail/toggle_menu.png" class="img-responsive" id="nav_toggle_btn">
+      </div>
+    </nav>
+    <div class="alert_side_bar" id="sidenav">
+      <div class="alert_top_header justify_beetween">
+        <div class="alert_heading inline_flex">
+          <div class="alert_icon">
+            <img src="assets/images/retail/alert_icon_panel.png" class="img-responsive">
+          </div>
+          <h3 class="alert_title">ALERTS</h3>
+        </div>
+        <div class="close_div">
+          <div class="close_icon" (click)="closeNav()">
+            <img src="assets/images/retail/alert_close_icon.png" class="img-responsive">
+          </div>
+        </div>
+      </div>
+      <ul id="data_alert" class="side_nav_items">
+        <!-- data here  -->
+        <li class='sidebar_item inline_flex' *ngFor="let ra of retailalert">
+          <div class='alert_msg inline_flex'>
+            <div class='list_icon'>
+              <img src='assets/images/retail/{{ra.status}}.png' class='img-responsive'>
+            </div>
+            <p class='para_text_normal'>{{ra.name}}</p>
+          </div>
+          <p class='para_text_normal'>{{ra.time}}</p>
+        </li>
+      </ul>
+    </div>
+
+    <main class="store_details_content left_right_content">
+      <div class="left_div">
+        <div class="store_graph" id="clickForAlert">
+          <img src="assets/images/tab_1_video.png" alt="store_graph" class="img-responsive tab_1_video alert_pop_active" (click)="tab1()">
+          <img src="assets/images/tab_2_video.png" alt="store_graph" class="img-responsive tab_2_video alert_pop_active" (click)="tab2()">
+          <div class="tab_3_video"></div>
+          <img src="assets/images/tab_4_video.png" alt="store_graph" class="img-responsive tab_4_video alert_pop_active" (click)="tab4()">
+          <!-- /alert_misplaced starts-->
+          <div id="left_popup_1" class="alert_misplaced alert_popup_dash">
+            <div class="alert_bg">
+              <div class="alert_icon_img">
+                <img src="assets/images/retail/alert_small_icon.png" class="img-responsive">
+              </div>
+              <p class="popup_text_para">Infosys Bottle is misplaced on Aisle A1.</p>
+            </div>
+            <div class="cancel_alert_div" id="alertbgCancel" (click)="cancelAlert()">
+              <img src="assets/images/retail/alert_bg_cancel.png" class="img-responsive">
+            </div>
+          </div>
+          <!-- /alert_misplaced ends-->
+          <!-- staff details popup starts-->
+          <div id="left_popup_2" class="customer_details" (click)="leftPopup2()">
+            <div class="customer_profile_popup">
+              <div class="user_profile_head inline_flex">
+                <div class="user_profile_pic">
+                  <img src="assets/images/popup/custmore_profile_pic.png" class="img-responsive">
+                </div>
+                <h4 class="customer_name">Michael Philip</h4>
+              </div>
+              <ul class="more_details_customer">
+                <li>
+                  <p class="top_title_para">Department</p>
+                  <p class="para_text_normal">Health and Fitness</p>
+                </li>
+                <li>
+                  <p class="top_title_para">Remaining Shift</p>
+                  <div class="shift_graph_div">
+                    <p class="shift_graph">
+                      <img src="assets/images/popup/shift_line.png" class="img-responsive">
+                    </p>
+                    <p class="top_title_para">
+                      2
+                      <br /> hours
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <p class="top_title_para">Ratings</p>
+                  <p class="ratting_star">
+                    <img src="assets/images/popup/popup_rating.png" class="img-responsive">
+                  </p>
+                </li>
+                <li>
+                  <p class="top_title_para">Awards</p>
+                  <p class="awards_div">
+                    <img src="assets/images/popup/award.png" class="img-responsive">
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- /staff details popup ends-->
+          <!-- /hover tooltip starts -->
+          <div id="left_popup_3" class="model_graph">
+            <ul class="tooltip_boxs">
+              <li class="tooltip_box_list box_list_1">
+                <div class="tooltip_li_1 tooltip_li">
+                  <img src="assets/images/popup/small_graph_li_bg.png" class="img-responsive">
+                  <div class="tooltip_div">
+                    <p class="tooltip_para tooltiptext">Health &amp; Fitness Aisle 1</p>
+                  </div>
+                </div>
+              </li>
+              <li class="tooltip_box_list box_list_2">
+                <div class="tooltip_li_2 tooltip_li">
+                  <img src="assets/images/popup/small_graph_li_bg.png" class="img-responsive">
+                  <div class="tooltip_div">
+                    <p class="tooltip_para tooltiptext">Health &amp; Fitness Aisle 2</p>
+                  </div>
+                </div>
+              </li>
+              <li class="tooltip_box_list box_list_3">
+                <div class="tooltip_li_3 tooltip_li">
+                  <img src="assets/images/popup/small_graph_li_bg.png" class="img-responsive">
+                  <div class="tooltip_div">
+                    <p class="tooltip_para tooltiptext">Health &amp; Fitness Aisle 3</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <ul class="tooltip_boxs tooltip_box_2">
+              <li class="tooltip_box_list box_list_4">
+                <div class="tooltip_li_4 tooltip_li">
+                  <img src="assets/images/popup/small_graph_li_bg.png" class="img-responsive">
+                  <div class="tooltip_div">
+                    <p class="tooltip_para tooltiptext">Health &amp; Fitness Aisle 4</p>
+                  </div>
+                </div>
+              </li>
+              <li class="tooltip_box_list box_list_5">
+                <div class="tooltip_li_5 tooltip_li">
+                  <img src="assets/images/popup/small_graph_li_bg.png" class="img-responsive">
+                  <div class="tooltip_div">
+                    <p class="tooltip_para tooltiptext">Health &amp; Fitness Aisle 5</p>
+                  </div>
+                </div>
+              </li>
+              <li class="tooltip_box_list box_list_6">
+                <div class="tooltip_li_6 tooltip_li">
+                  <img src="assets/images/popup/small_graph_li_bg.png" class="img-responsive">
+                  <div class="tooltip_div">
+                    <p class="tooltip_para tooltiptext">Health &amp; Fitness Aisle 6</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!-- /hover tooltip ends -->
+          <!-- /infra security_solutions popup ends -->
+          <div id="left_popup_4" class="customer_details security_solutions" (click)="leftPopup4()">
+            <div class="customer_profile_popup security_solutions_popup">
+              <div class="user_profile_head inline_flex">
+                <div class="user_profile_pic">
+                  <img src="assets/images/popup/camera_img_popup.png" class="img-responsive">
+                </div>
+                <h4 class="customer_name">Security solutions high resolution dome cctv camera</h4>
+              </div>
+              <ul class="more_details_customer">
+                <li>
+                  <div class="inline_flex justify_beetween">
+                    <div class="first_div_customore">
+                      <p class="top_title_para m_space">Resolution</p>
+                      <p class="para_text_normal">2MP (1920 X 1080)</p>
+                    </div>
+                    <div class="sec_div_customore">
+                      <p class="top_title_para m_space">Lens</p>
+                      <p class="para_text_normal">4mm</p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="inline_flex justify_beetween">
+                    <div class="first_div_customore">
+                      <p class="top_title_para m_space">Operation Condition</p>
+                      <p class="para_text_normal">20 degree F to 360 degree F</p>
+                    </div>
+                    <div class="sec_div_customore">
+                      <p class="top_title_para m_space">Angle</p>
+                      <p class="para_text_normal">360 degree</p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <div class="column_3">
+                <div class="display_flex_div">
+                  <div class="first_div_customore">
+                    <p class="top_title_para m_space">Upcoming Service</p>
+                    <p class="para_text_normal">2 Feb 2019</p>
+                  </div>
+                  <div class="sec_div_customore">
+                    <p class="top_title_para m_space">Replaced On</p>
+                    <p class="para_text_normal">20 Aug 2018</p>
+                  </div>
+                  <div class="thr_div_customore">
+                    <p class="top_title_para m_space">Serviced On</p>
+                    <p class="para_text_normal">15 Dec 2018</p>
+                  </div>
+                </div>
+              </div>
+              <div class="status_div_popup">
+                <p class="para_text_normal">
+                  status:
+                  <span class="active_text">Active</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- /infra security_solutions popup ends -->
+        </div>
+        <div class="retail_tabs">
+          <ul class="nav nav-pills nav_retail clickable_tabs">
+            <li class="active nav_item click_1">
+              <a href="javascript:void(0)" id="retailMenu_1" (click)="customer()">
+                <div class="img-cover">
+                  <div class="customer_icon nav_icons"></div>
+                </div>
+                <span class="retail_tabs_text">Customer</span>
+              </a>
+            </li>
+            <li class="nav_item click_2">
+              <a href="javascript:void(0)" id="retailMenu_2" (click)="staff()">
+                <div class="img-cover">
+                  <div class="staff_icon nav_icons"></div>
+                </div>
+                <span class="retail_tabs_text">Staff</span>
+              </a>
+            </li>
+            <li class="nav_item click_3">
+              <a href="javascript:void(0)" id="retailMenu_3" (click)="inventory()">
+                <div class="img-cover">
+                  <div class="inventory_icon nav_icons"></div>
+                </div>
+                <span class="retail_tabs_text">Inventory</span>
+              </a>
+            </li>
+            <li class="nav_item click_4">
+              <a href="javascript:void(0)" id="retailMenu_4" (click)="infra()">
+                <div class="img-cover">
+                  <div class="Infra_icon nav_icons"></div>
+                </div>
+                <span class="retail_tabs_text">Infra</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="status_div">
+          <p class="status_text ok_text">Ok</p>
+          <p class="status_text issue_text">Issue</p>
+        </div>
+        <div class="fixed_bottom_disclaimer">
+          <p class="desclaimer_text">
+            Disclaimer : The products showcased in this booth are for general demonstration purposes only. Infosys Ltd.
+          </p>
+          <a href="#disclaimerPopup" role="button" data-toggle="modal" data-target="#disclaimerPopup" class="desclaimer_read_more">Read More...</a>
+        </div>
+      </div>
+      <!-- /left_div -->
+      <div class="right_div">
+        <div class="tab-content">
+          <app-retail-customer (hideAll)="hideAllTabs()" (loadVideo)="loadRespectiveVideo()"></app-retail-customer>
+          <app-retail-staff (hideAll)="hideAllTabs()" (loadVideo)="loadRespectiveVideo()"></app-retail-staff>
+          <app-retail-inventory (hideAll)="hideAllTabs()" (loadVideo)="loadRespectiveVideo()"></app-retail-inventory>
+          <app-retail-infra (hideAll)="hideAllTabs()" (loadVideo)="loadRespectiveVideo()"></app-retail-infra>
+        </div>
+        <!-- /Main tab-content -->
+      </div>
+      <!-- /right_div -->
+    </main>
+    <!-- /store_details_content -->
+    <div id="disclaimerPopup" class="modal disclmaier_popup animated fadeIn" data-easein="swoopIn" tabindex="-1" role="dialog"
+      aria-labelledby="costumModalLabel" aria-hidden="true" (click)="disclaimer()">
+      <div class="modal-dialog animated slideInUp delay-2s">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              <img src="assets/images/close_black.png" class="img-responsive">
+            </button>
+            <h4 class="modal_title text-center">
+              Disclaimer
+            </h4>
+          </div>
+          <div class="modal-body">
+            <p>
+              The products showcased in this booth are for general demonstration purposes only. Infosys Ltd. is not associated with any
+              of the products displayed in any manner whatsoever and makes no warranties of any kind, either express or implied,
+              including but not limited to warranties of merchantability, fitness for a particular purpose, of title, or
+              of non-infringement of third party rights.
+            </p>
+          </div>
+          <!-- /modal-body -->
+        </div>
+      </div>
+    </div>
+    <!-- /disclaimerPopup -->
+  </section>
+  <!-- /store_intelligence_section -->
+</body>

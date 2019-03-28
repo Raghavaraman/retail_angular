@@ -1,0 +1,176 @@
+<div id="Staff" class="main_tab tab-pane fade" *ngIf="retailstaff">
+  <div class="staff_div">
+    <div class="dropdown_nav">
+      <div class="drop_dowm_img">
+        <img src="assets/images/retail/staff_dropdown.png" class="img-resposnive">
+      </div>
+    </div>
+    <div class="staff_shift_content inline_flex border_bottom_retail">
+      <div class="daily_target_div h_100">
+        <h3 class='panel_title'>Daily Target</h3>
+        <div class='inline_flex h_100 pt_18 justify_beetween'>
+          <div class='daily_avg_sale_graph'>
+            <!-- <img src='assets/images/retail/per_associate.png' class='img-responsive'>  -->
+            <div class="dailyTarget">
+              <div class="barOverflow">
+                <div class="bar"></div>
+              </div>
+              <div id="daily_target_meter" class="progress_content">
+                <p class="value_text_span">
+                  <span>$</span>{{retailstaff.dailyTarget[0].current}}</p>
+                <p class="progress_text_white">{{retailstaff.dailyTarget[0].status}}</p>
+                <p class="progress_text_color">{{retailstaff.dailyTarget[0].status2}}</p>
+              </div>
+            </div>
+            <div class="min_max_div">
+              <p class="first_target_text min_max_text">0</p>
+              <p class="sec_target_text min_max_text">25k</p>
+            </div>
+            <!-- /min_max_div -->
+          </div>
+          <div id="daily_target_data" class='total_associates_div'>
+            <!-- data here -->
+            <h4 class='big_number_title'>{{retailstaff.totalAssociate}}</h4>
+            <p class='para_text_color'>total
+              <br/> associates</p>
+          </div>
+        </div>
+
+      </div>
+      <div id="staff_of_the_week_data" class="staff_of_the_week h_100">
+        <!-- data here -->
+        <h3 class='panel_title'>Staff Of the week</h3>
+        <div class='inline_flex h_100 align_items_start pt_18'>
+          <div class='staff_of_the_week_img'>
+            <img src='assets/images/retail/{{retailstaff.staffofTheWeek[0].photo}}.png' class='img-responsive'>
+          </div>
+          <div class='staff_of_the_week_content'>
+            <div class='best_employee'>
+              <h5 class='para_text_color inline_flex'>
+                <img src='assets/images/retail/{{retailstaff.staffofTheWeek[0].type}}.png' class='img-responsive best_employee_icon'>
+                <span class='para_text_color'>{{retailstaff.staffofTheWeek[0].typeText}}</span>
+              </h5>
+            </div>
+            <div class='about_staff_profile'>
+              <p class='para_text_color staff_name'>{{retailstaff.staffofTheWeek[0].name}}</p>
+              <p class='para_text_normal staff_designation'>{{retailstaff.staffofTheWeek[0].designation}}</p>
+              <p class='staff_rating'>
+                <img src='assets/images/retail/rating{{retailstaff.staffofTheWeek[0].rating}}.png' class='img-responsive'>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="associates_and_staff_campaign_div inline_flex align_items_start justify_beetween">
+      <div class="associates_strength_ratio_div">
+        <div id="breakup_associates_data" class="breakup_associates border_bottom_retail">
+          <!-- data here -->
+          <h3 class='panel_title'>Breakup of Associates</h3>
+          <div class='inline_flex justify_beetween pt_18'>
+            <div class='active_associates'>
+              <h5 class='caption_text active_text'>{{retailstaff.breakupAssociates[0].active}}</h5>
+              <p class='para_text_color'>active</p>
+            </div>
+            <div class='onleave_associates'>
+              <h5 class='caption_text onleave_text'>{{retailstaff.breakupAssociates[0].onLeave}}</h5>
+              <p class='para_text_color'>On Leave</p>
+            </div>
+            <div class='onbreak_associates'>
+              <h5 class='caption_text on_break_text'>{{retailstaff.breakupAssociates[0].onBreak}}</h5>
+              <p class='para_text_color'>On Break</p>
+            </div>
+          </div>
+        </div>
+        <div class="upcoming_staff_strength_div border_bottom_retail">
+          <h3 class="panel_title">Upcoming Staff strength</h3>
+          <div id="staff_strength_graph" class="staff_strength_bar pt_18">
+            <!-- <img src="assets/images/retail/upcoming_staff_strength.png" class="img-responsive"> -->
+            <p class="upcoming_staff_strength_text">
+              January
+            </p>
+          </div>
+        </div>
+        <div class="progress_circle_div inline_flex justify_beetween">
+          <div class="customer_ratio text-center">
+            <div class="circle_progress_ratio progress_circle">
+              <!--<img src="assets/images/retail/progress_1.png" class="img-responsive">-->
+              <div id="returning_customer_ratio" class="returning_ratio">
+                <!-- data here -->
+                <div class='circle_progress_ratio circle'>
+                  <div class='middle_content_circle'>
+                    <circle-progress [percent]="50" [radius]="70" [outerStrokeWidth]="8" [outerStrokeColor]="'#00ffe4'" [animation]="true" [showInnerStroke]="false"
+                      [animationDuration]="1000">
+                      <span class='value_tag'>{{retailstaff.returningCustomerRatioCount}}/{{retailstaff.returningCustomerRatioTotal}}</span>
+                      <strong class='value_tag' style='display:none;' ></strong>
+                      <span class='value_text'>{{retailstaff.returningCustomerRatioType}}</span>
+                    </circle-progress>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="para_text_normal">Returning Customer Ratio</p>
+          </div>
+          <div class="engagement_period text-center">
+            <div class="circle_progress_ratio progress_circle">
+              <!--<img src="assets/images/retail/progress_2.png" class="img-responsive">-->
+              <div id="engagement_period_graph" class="engagement_period">
+                <div class='circle_progress_ratio circle'>
+                  <div class='middle_content_circle'>
+                    <circle-progress [percent]="66.66" [toFixed]="2" [radius]="70" [outerStrokeWidth]="8" [outerStrokeColor]="'#00ffe4'" [animation]="true"
+                      [showInnerStroke]="false" [animationDuration]="1000">
+                      <span class='value_tag'>{{retailstaff.engagementPeriodStarts}}-{{retailstaff.engagementPeriodEnds}}
+                        <div class='minsdiv'>Mins</div>
+                      </span>
+                      <strong class='value_tag' style='display:none;'></strong>
+                      <span class='value_text'>Customers</span>
+                    </circle-progress>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="para_text_normal">Engagement Period</p>
+          </div>
+        </div>
+      </div>
+      <!-- /associates_strength_ratio_div -->
+      <div class="staff_issue_campaign_div">
+        <div id="staff_for_campaign_data" class="staff_for_campaign border_bottom_retail">
+          <!-- data here -->
+          <h3 class='panel_title'>Special Staff For Campaign</h3>
+          <div class='inline_flex pt_18'>
+            <div class='left_campaign_img'>
+              <img src='assets/images/retail/{{retailstaff.specialStaffCampaign[0].img}}' class='img-responsive'>
+            </div>
+            <div class='right_campaign_content'>
+              <div class='active_associates pb_10'>
+                <h5 class='caption_text active_text'>{{retailstaff.specialStaffCampaign[0].active}}</h5>
+                <p class='para_text_color'>active</p>
+              </div>
+              <div class='onleave_associates pb_10'>
+                <h5 class='caption_text onleave_text'>{{retailstaff.specialStaffCampaign[0].onLeave}}</h5>
+                <p class='para_text_color'>On Leave</p>
+              </div>
+              <div class='onbreak_associates'>
+                <h5 class='caption_text onleave_text'>{{retailstaff.specialStaffCampaign[0].onBreak}}</h5>
+                <p class='para_text_color'>On Break</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /staff_for_campaign -->
+        <div class="staff_issue_div">
+          <h3 class="panel_title">Staff Issues</h3>
+          <div class="overflow_list scroll">
+            <ul id="staff_issue_data" class="products_list_li" *ngFor="let rs of retailstaf">
+              <!-- data here -->
+              <li *ngFor="let we of rs.staffIssues">
+                <p class='para_text_color'>{{we.msg}}</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
